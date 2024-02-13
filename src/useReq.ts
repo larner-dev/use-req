@@ -2,7 +2,7 @@
 import { Req, ReqMethod, ReqCode } from "@larner.dev/req";
 import { useMemo, useState } from "react";
 
-interface ReqError<T extends string> {
+export interface ReqError<T extends string> {
   message: string;
   code: ReqCode | T;
   params?: Record<string, any>;
