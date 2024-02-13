@@ -2,9 +2,13 @@
 import { Req, ReqMethod } from "@larner.dev/req";
 import { useMemo, useState } from "react";
 
-interface UseReqState<T> {
+interface UseReqState<T, E extends string = string> {
   loading: boolean;
-  error: Error | string | null;
+  error: {
+    message: string;
+    code: E;
+    params?: Record<string, any>;
+  } | null;
   result: T | null;
 }
 
@@ -32,12 +36,6 @@ export const useReq = <T>(request: Req) => {
       url: string,
       params: any
     ) => {
-      if (!request[method]) {
-        return setState((prev) => ({
-          ...prev,
-          error: `Unknown request method "${method}"`,
-        }));
-      }
       setState({ error: null, loading: true, result: null });
       try {
         const result = await request[method](url, params);
@@ -45,7 +43,11 @@ export const useReq = <T>(request: Req) => {
         return result as T;
       } catch (error: any) {
         setState({
-          error: error.message,
+          error: {
+            message: error.message,
+            code: error.code || "UNKNOWN",
+            params: error.params || undefined,
+          },
           loading: false,
           result: null,
         });
