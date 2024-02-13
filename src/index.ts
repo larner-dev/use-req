@@ -1,1 +1,1 @@
-export { useReq, useReqBuilder } from "./useReq";
+export { useReq } from "./useReq";

@@ -19,30 +19,7 @@ export interface RequestMethods_T<T> {
   delete: (url: string, params?: any) => void | T | null;
 }
 
-interface UseReqParams {
-  baseUrl?: string;
-  headers?: Record<string, string>;
-  debug?: boolean;
-}
-
-export const useReqBuilder =
-  (baseParams: UseReqParams) =>
-  <T>(params?: UseReqParams) =>
-    useReq<T>({ ...baseParams, ...(params || {}) });
-
-export const useReq = <T>(params?: UseReqParams) => {
-  const request = useMemo(() => {
-    const baseUrl = params?.baseUrl || "";
-    const headers = params?.headers || {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    };
-    const r = new Req(baseUrl);
-    r.headers = headers;
-    r.debug = !!params?.debug;
-    return r;
-  }, [params?.baseUrl, params?.headers]);
-
+export const useReq = <T>(request: Req) => {
   const [state, setState] = useState<UseReqState<T>>({
     loading: false,
     error: null,
@@ -63,7 +40,6 @@ export const useReq = <T>(params?: UseReqParams) => {
       }
       setState({ error: null, loading: true, result: null });
       try {
-        console.log("req", method, url);
         const result = await request[method](url, params);
         setState({ error: null, loading: false, result });
         return result as T;
