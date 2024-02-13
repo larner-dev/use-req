@@ -242,10 +242,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@larner.dev/req@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@larner.dev/req/-/req-1.2.0.tgz#5fbec37b168774e6edb5ec96a33364ee5fd6f1b0"
-  integrity sha512-dg8adIFQunPBfF7bN3sqTBOGDyso8bOsb6BwPSEtmBg+OHu1LGD8Ka475YeUsSF1bGvA3VzArOgvIyyLnNgSeA==
+"@larner.dev/req@1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@larner.dev/req/-/req-1.3.0.tgz#3c20e913b743a967a8515d9685360f2011c85a63"
+  integrity sha512-c/kx5Dhw0jmMh0AG8EpJ4+0gDYRF1DyIjwGGnyA7EpYDY9XckqTwbduC+fNhRXHqJ+xpUQPbjTAt0g8lXPHGMA==
 
 "@microsoft/api-extractor-model@7.28.3":
   version "7.28.3"
