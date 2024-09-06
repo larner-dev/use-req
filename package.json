@@ -48,7 +48,7 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "@larner.dev/req": "^1.3.0",
+    "@larner.dev/req": "^1.6.0",
     "react": "^18.2.0"
   }
 }
